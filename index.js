@@ -4,7 +4,7 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
-var AzureStorageAdapter = require('DDParse-azure-file-adapter').AzureStorageAdapter;
+//var AzureStorageAdapter = require('DDParse-azure-file-adapter').AzureStorageAdapter;
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
