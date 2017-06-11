@@ -4,6 +4,7 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
+var ParseServerAzure = require('parse-server-azure');
 //var AzureStorageAdapter = require('parse-server-azure-storage').AzureStorageAdapter;
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
@@ -26,7 +27,7 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   maxUploadSize: process.env.MAX_UPLOAD_SIZE,
-  //filesAdapter: new AzureStorageAdapter(account, container, options),
+  filesAdapter: new ParseServerAzure.FilesAdapter(account, container, filesOptions),
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
