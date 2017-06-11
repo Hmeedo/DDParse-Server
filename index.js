@@ -6,7 +6,7 @@ var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 var errorString = '';
 try {
-   var AzureStorageAdapter = require('parse-server');
+   var AzureStorageAdapter = require('parse-server-azure-config');
 }
 catch(err) {
     errorString = err.message;
