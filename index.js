@@ -6,7 +6,7 @@ var path = require('path');
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 var errorString = ''
 try {
- var AzureStorageAdapter = require('parse-server-azure'); 
+ var AzureStorageAdapter = require('parse-server-azure-storage'); 
 }
 catch (err) {
    errorString = err.message
