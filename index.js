@@ -17,6 +17,7 @@ var api = new ParseServer({
   appId: process.env.APP_ID || 'myAppId',
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
+  maxUploadSize: process.env.MAX_UPLOAD_SIZE,
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
@@ -32,6 +33,9 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
 
 // Serve the Parse API on the /parse URL prefix
 var mountPath = process.env.PARSE_MOUNT || '/parse';
+app.use(mountPath, api);
+
+var mountPath = process.env.AppMountPath || '/parse';
 app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
