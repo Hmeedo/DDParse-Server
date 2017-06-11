@@ -6,6 +6,8 @@ ADD . /parse
 WORKDIR /parse
 RUN npm install
 
+RUN npm install 'parse-server-azure-storage'
+
 ENV APP_ID setYourAppId
 ENV MASTER_KEY setYourMasterKey
 ENV DATABASE_URI setMongoDBURI
