@@ -6,6 +6,7 @@ var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 //var AzureStorageAdapter = require('DDParse-azure-file-adapter').AzureStorageAdapter;
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
+var ParseServerAzure = require('parse-server-azure');
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
