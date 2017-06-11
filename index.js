@@ -12,6 +12,13 @@ if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
+ var account = process.env.STORAGE_ACCOUNT_NAME;		
+ var container = process.env.STORAGE_CONTAINER_NAME;		
+ var options = {		
+     accessKey: process.env.FILE_ACCESS_KEY || '',		
+     directAccess: true // If set to true, files will be served by Azure Blob Storage directly		
+ }
+ 
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/dev',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
