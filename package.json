@@ -15,7 +15,7 @@
     "parse-server": "*"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
     "install": "parse-server-azure-storage"
   },
   "engines": {
