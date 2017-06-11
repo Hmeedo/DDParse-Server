@@ -4,13 +4,7 @@ var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
-var errorString = ''
-try {
- var AzureStorageAdapter = require('parse-server-azure-storage').AzureStorageAdapter; 
-}
-catch (err) {
-   errorString = err.message
-}
+var AzureStorageAdapter = require('parse-server-azure-storage').AzureStorageAdapter; 
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
@@ -30,7 +24,7 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || '', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'http://localhost:1337/parse',  // Don't forget to change to https if needed
   maxUploadSize: process.env.MAX_UPLOAD_SIZE,
-  //filesAdapter: new AzureStorageAdapter(account, container, options),
+  filesAdapter: new AzureStorageAdapter(account, container, options),
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
@@ -53,7 +47,7 @@ app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!' + errorString);
+  res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
 });
 
 // There will be a test page available on the /test path of your server url
