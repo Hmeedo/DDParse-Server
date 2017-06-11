@@ -1,9 +1,5 @@
 // Example express application adding the parse-server module to expose Parse
 // compatible API routes.
-
-var express = require('express');
-var ParseServer = require('parse-server').ParseServer;
-var path = require('path');
 var errorString = '';
 try {
    var AzureStorageAdapter = require('parse-server-azure-config');
@@ -11,6 +7,9 @@ try {
 catch(err) {
     errorString = err.message;
 }
+var express = require('express');
+var ParseServer = require('parse-server').ParseServer;
+var path = require('path');
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
