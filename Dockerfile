@@ -1,12 +1,10 @@
 FROM node:latest
-
+RUN npm install 'parse-server-azure-storage'
 RUN mkdir parse
 
 ADD . /parse
 WORKDIR /parse
 RUN npm install
-
-RUN npm install 'parse-server-azure-storage'
 
 ENV APP_ID setYourAppId
 ENV MASTER_KEY setYourMasterKey
