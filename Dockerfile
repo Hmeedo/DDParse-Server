@@ -21,5 +21,5 @@ EXPOSE 1337
 # A main.js file must be present, if not Parse will not start
 
 # VOLUME /parse/cloud               
-
+CMD [ "npm", "install" ]
 CMD [ "npm", "start" ]
