@@ -1,5 +1,4 @@
 FROM node:latest
-RUN npm install 'parse-server-azure-storage'
 RUN mkdir parse
 
 ADD . /parse
