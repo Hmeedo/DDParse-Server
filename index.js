@@ -9,7 +9,7 @@ try {
    var AzureStorageAdapter = require('parse-server-azure-config');
 }
 catch(err) {
-    errorString = " " + err;
+    errorString = err.message;
 }
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
