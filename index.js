@@ -4,11 +4,12 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
+var errorString = '';
 try {
     var AzureStorageAdapter = require('DDParse-azure-file-adapter').AzureStorageAdapter;
 }
 catch(err) {
-    console.log(err.message);
+    errorString = err.message;
 }
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
@@ -52,7 +53,7 @@ app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
+  res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!' + errorString);
 });
 
 // There will be a test page available on the /test path of your server url
