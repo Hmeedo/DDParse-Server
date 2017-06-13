@@ -42,7 +42,7 @@ app.use('/public', express.static(path.join(__dirname, '/public')));
 var mountPath = process.env.PARSE_MOUNT || '/parse';
 app.use(mountPath, api);
 
-var mountPath = process.env.AppMountPath || '/parse';
+var mountPath = process.env.APP_MOUNT_PATH || '/parse';
 app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
